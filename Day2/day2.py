@@ -5,6 +5,7 @@ blueCubes = 14
 total = 0
 totalPower = 0
 
+
 def parse_input(input_string):
     games = {}
 
@@ -30,6 +31,7 @@ def parse_input(input_string):
             games[game_number].append(color_count)
 
     return games
+
 
 def isPossible(game):
     currRedCubes = 0
@@ -67,6 +69,7 @@ def power(game):
             currGreenCubes = part['green']
 
     return currGreenCubes * currBlueCubes * currRedCubes
+
 
 with open('input.txt', 'r') as file:
     lines = file.readlines()

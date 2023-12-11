@@ -1,10 +1,13 @@
 import re
+
 total = 0
 
 numberWordMap = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9}
 
+
 def takeIndex(elem):
     return elem[0]
+
 
 with open('input.txt', 'r') as file:
     lines = file.readlines()
@@ -13,8 +16,8 @@ with open('input.txt', 'r') as file:
         firstNum = [-1, 0]
         lastNum = [-1, 0]
 
-
-        numberWordsIndex = [[i.start(), numberWordMap[numberWord]] for numberWord in numberWordMap.keys() for i in re.finditer(numberWord, line)]
+        numberWordsIndex = [[i.start(), numberWordMap[numberWord]] for numberWord in numberWordMap.keys() for i in
+                            re.finditer(numberWord, line)]
         if len(numberWordsIndex) > 0:
             numberWordsIndex.sort(key=takeIndex)
             firstNum = numberWordsIndex[0]
@@ -34,9 +37,7 @@ with open('input.txt', 'r') as file:
             lastNum = firstNum
 
         lineTotal = firstNum[1] * 10 + lastNum[1]
-        print(line)
         print(lineTotal)
         total += lineTotal
 
 print(total)
-

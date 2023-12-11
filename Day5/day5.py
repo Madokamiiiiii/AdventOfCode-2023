@@ -4,6 +4,7 @@ map_names = [
     'water-to-light', 'light-to-temperature', 'temperature-to-humidity', 'humidity-to-location'
 ]
 
+
 def parse_input(input_text):
     parsed_data = {}
     sections = input_text.split('\n\n')
@@ -22,11 +23,13 @@ def parse_input(input_text):
 
     return parsed_data
 
+
 def helper(mapList, previousNumber):
     for value in mapList:
         if previousNumber in range(value[1], value[1] + value[2]):
             return value[0] + previousNumber - value[1]
     return previousNumber
+
 
 def solve1(inputMap):
     solution = 0
@@ -36,7 +39,6 @@ def solve1(inputMap):
         for mapName in map_names:
             mapList = inputMap[mapName]
             previousNumber = helper(mapList, previousNumber)
-
 
         if solution == 0:
             solution = previousNumber
@@ -52,7 +54,7 @@ def solve2(inputMap):
     seeds = []
     for i, seed in enumerate(inputMap['seeds']):
         if i % 2 == 0:
-            newSeeds = range(seed, seed + inputMap['seeds'][i+1])
+            newSeeds = range(seed, seed + inputMap['seeds'][i + 1])
             seeds.append(newSeeds)
 
     for seedSublist in seeds:
@@ -62,7 +64,6 @@ def solve2(inputMap):
             for mapName in map_names:
                 mapList = inputMap[mapName]
                 previousNumber = helper(mapList, previousNumber)
-
 
             if solution == 0:
                 solution = previousNumber

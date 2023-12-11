@@ -1,5 +1,3 @@
-import copy
-
 def parse_input(input_text):
     cards = []
 
@@ -35,12 +33,14 @@ def solve1(cards):
 
     return total
 
+
 def getCards(intermediateCards, copyOfCards, cards):
     winningNumbers = len(set(cards[i]['Winning']).intersection(set(cards[i]['Normal'])))
     for i in range(int(cards[i]['Index']) + 1, int(cards[i]['Index']) + 1 + winningNumbers):
         if i < max:
             intermediateCards.append(copyOfCards[i])
             return intermediateCards
+
 
 def solve2(cards):
     numCards = {}
